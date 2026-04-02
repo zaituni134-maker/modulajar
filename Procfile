@@ -1,0 +1,1 @@
+web: streamlit run generator.py --server.port $PORT --server.enableCORS false

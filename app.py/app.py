@@ -1,17 +1,4 @@
-# II. KEGIATAN PEMBELAJARAN (Deskripsi Gamblang)
-    doc.add_heading('II. KEGIATAN PEMBELAJARAN', level=1)
-
-    # 1. Pendahuluan
-    doc.add_heading('1. Kegiatan Pendahuluan (10 Menit)', level=2)
-    p1 = doc.add_paragraph()
-    p1.add_run("• Orientasi: ").bold = True
-    p1.add_run("Guru membuka pelajaran dengan salam, doa bersama, dan memeriksa kehadiran siswa untuk mengondisikan suasana belajar yang positif.\n")
-    p1.add_run("• Apersepsi: ").bold = True
-    p1.add_run(f"Guru mengaitkan materi {data['materi']} dengan pengalaman siswa sehari-hari atau materi sebelumnya.\n")
-    p1.add_run("• Motivasi: ").bold = True
-    p1.add_run(f"Guru menyampaikan tujuan pembelajaran yang ingin dicapai dan manfaat mempelajari {data['materi']} dalam kehidupan.")
-
-    # 2. Kegiatan Inti
+from generator import *
     doc.add_heading('2. Kegiatan Inti (50 Menit)', level=2)
     p2 = doc.add_paragraph()
     p2.add_run("• Tahap 1: Pemberian Rangsangan (Stimulation)\n").bold = True
