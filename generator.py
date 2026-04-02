@@ -184,4 +184,6 @@ if st.button("🚀 Generate Modul Ajar", key="generate"):
 
 # Footer
 st.markdown("---")
-st.markdown("Dibuat dengan ❤️ menggunakan Streamlit")
+st.markdown("Dibuat dengan ❤️ menggunakan Streamlit")cd /workspaces/modulajar
+git add .
+git commit -m "Add generator.py with modul ajar generation logic"
