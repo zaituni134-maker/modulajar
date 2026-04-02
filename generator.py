@@ -37,7 +37,17 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-def generate_modul_ajar(data):
+def generate_kompetensi_dasar(mata_pelajaran, materi):
+    return f"Memahami konsep dasar {materi} dalam {mata_pelajaran}."
+
+def generate_tujuan_pembelajaran(mata_pelajaran, materi):
+    return f"Siswa dapat memahami dan menerapkan konsep {materi} dalam {mata_pelajaran}."
+
+def generate_materi_pembelajaran(mata_pelajaran, materi):
+    return f"Materi pembelajaran meliputi pengantar {materi}, contoh penerapan, dan latihan dalam {mata_pelajaran}."
+
+def generate_penilaian(mata_pelajaran, materi):
+    return f"Penilaian dilakukan melalui tes tertulis, observasi, dan tugas praktik terkait {materi} dalam {mata_pelajaran}."
     doc = Document()
 
     # Header
@@ -137,14 +147,48 @@ with st.expander("📝 Identitas Modul", expanded=True):
         alokasi_waktu = st.number_input("⏰ Alokasi Waktu (JP)", min_value=1, value=2)
 
 with st.expander("🎯 Kompetensi dan Tujuan"):
-    kompetensi_dasar = st.text_area("🎯 Kompetensi Dasar", placeholder="Deskripsikan kompetensi dasar", height=100)
-    tujuan_pembelajaran = st.text_area("🎯 Tujuan Pembelajaran", placeholder="Deskripsikan tujuan pembelajaran", height=100)
+    if 'kompetensi_dasar' not in st.session_state:
+        st.session_state.kompetensi_dasar = ""
+    if 'tujuan_pembelajaran' not in st.session_state:
+        st.session_state.tujuan_pembelajaran = ""
+    
+    if st.button("🔄 Generate Otomatis Kompetensi & Tujuan"):
+        if mata_pelajaran and materi:
+            st.session_state.kompetensi_dasar = generate_kompetensi_dasar(mata_pelajaran, materi)
+            st.session_state.tujuan_pembelajaran = generate_tujuan_pembelajaran(mata_pelajaran, materi)
+    
+    kompetensi_dasar = st.text_area("🎯 Kompetensi Dasar", value=st.session_state.kompetensi_dasar, placeholder="Deskripsikan kompetensi dasar", height=100)
+    tujuan_pembelajaran = st.text_area("🎯 Tujuan Pembelajaran", value=st.session_state.tujuan_pembelajaran, placeholder="Deskripsikan tujuan pembelajaran", height=100)
+    
+    # Update session state
+    st.session_state.kompetensi_dasar = kompetensi_dasar
+    st.session_state.tujuan_pembelajaran = tujuan_pembelajaran
 
 with st.expander("📚 Materi Pembelajaran"):
-    materi_pembelajaran = st.text_area("📚 Materi Pembelajaran", placeholder="Deskripsikan materi pembelajaran", height=150)
+    if 'materi_pembelajaran' not in st.session_state:
+        st.session_state.materi_pembelajaran = ""
+    
+    if st.button("🔄 Generate Otomatis Materi Pembelajaran"):
+        if mata_pelajaran and materi:
+            st.session_state.materi_pembelajaran = generate_materi_pembelajaran(mata_pelajaran, materi)
+    
+    materi_pembelajaran = st.text_area("📚 Materi Pembelajaran", value=st.session_state.materi_pembelajaran, placeholder="Deskripsikan materi pembelajaran", height=150)
+    
+    # Update session state
+    st.session_state.materi_pembelajaran = materi_pembelajaran
 
 with st.expander("📊 Penilaian"):
-    penilaian = st.text_area("📊 Penilaian", placeholder="Deskripsikan metode penilaian", height=100)
+    if 'penilaian' not in st.session_state:
+        st.session_state.penilaian = ""
+    
+    if st.button("🔄 Generate Otomatis Penilaian"):
+        if mata_pelajaran and materi:
+            st.session_state.penilaian = generate_penilaian(mata_pelajaran, materi)
+    
+    penilaian = st.text_area("📊 Penilaian", value=st.session_state.penilaian, placeholder="Deskripsikan metode penilaian", height=100)
+    
+    # Update session state
+    st.session_state.penilaian = penilaian
 
 # Generate button
 if st.button("🚀 Generate Modul Ajar", key="generate"):
