@@ -183,3 +183,5 @@ if st.button("🚀 Generate Modul Ajar", key="generate"):
         st.error("❌ Harap isi semua field yang diperlukan.")
 
 # Footer
+st.markdown("---")
+st.markdown("Dibuat dengan ❤️ menggunakan Streamlit")
