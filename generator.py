@@ -183,7 +183,3 @@ if st.button("🚀 Generate Modul Ajar", key="generate"):
         st.error("❌ Harap isi semua field yang diperlukan.")
 
 # Footer
-st.markdown("---")
-st.markdown("Dibuat dengan ❤️ menggunakan Streamlit")cd /workspaces/modulajar
-git add .
-git commit -m "Add generator.py with modul ajar generation logic"
